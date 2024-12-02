@@ -1,113 +1,90 @@
-@font-face {
-    font-family: "Neue Haas Unica";
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-    src: url("//tdwpband.com/cdn/fonts/neue_haas_unica/neuehaasunica_n9.529a668b3bfb7dbacdfb03ed2856a88728c63112.woff2?h1=dGR3cGJhbmQuY29t&h2=dGR3cHNob3AuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=45e0f3197061e1fe2679b8c25ab0eae514717a1a529406f8ea177a7391fb8c51") format("woff2"),
-         url("//tdwpband.com/cdn/fonts/neue_haas_unica/neuehaasunica_n9.def8140dda00ee79a8e9f715ab116703443e92b6.woff?h1=dGR3cGJhbmQuY29t&h2=dGR3cHNob3AuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=fb8f895dcb286c5bf4fa5ceee968891b53b7f514c08758a5f906bb7df6c52492") format("woff");
-  }
-  
-        @font-face {
-    font-family: "Neue Haas Unica";
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-    src: url("//tdwpband.com/cdn/fonts/neue_haas_unica/neuehaasunica_n7.c08eeb9b390d030db92ffcd29c2e8921f8ed8719.woff2?h1=dGR3cGJhbmQuY29t&h2=dGR3cHNob3AuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=068e536cb60ba91bdd1bf4c4dd6920b08d0ca1ff61f476c826a8167dae3c83be") format("woff2"),
-         url("//tdwpband.com/cdn/fonts/neue_haas_unica/neuehaasunica_n7.7b38abda67516a590164d0927f901f4dbaff8922.woff?h1=dGR3cGJhbmQuY29t&h2=dGR3cHNob3AuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=17364e22632716451fad854cc561bc4c2aca91f1c603932e0f59dd66a9865097") format("woff");
-  }
-  
-        @font-face {
-    font-family: "Neue Haas Unica";
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-    src: url("//tdwpband.com/cdn/fonts/neue_haas_unica/neuehaasunica_i9.d80649afd6117cce73c7130edc61381441bd25ee.woff2?h1=dGR3cGJhbmQuY29t&h2=dGR3cHNob3AuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=20a5195d7463a63fa56e0d9e60f46cb1407677946c110f8543b6e312154b9328") format("woff2"),
-         url("//tdwpband.com/cdn/fonts/neue_haas_unica/neuehaasunica_i9.3be460f266d04157148acdb661f18a90eb3c0a98.woff?h1=dGR3cGJhbmQuY29t&h2=dGR3cHNob3AuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=c7832c249b1b8a44b07c09c483e992fb968462bfa57239639196ca41d3453250") format("woff");
-  }
-  
-        @font-face {
-    font-family: "Neue Haas Unica";
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap;
-    src: url("//tdwpband.com/cdn/fonts/neue_haas_unica/neuehaasunica_i7.d6041e4917ef13cfe13474b43d5de7baabe76bac.woff2?h1=dGR3cGJhbmQuY29t&h2=dGR3cHNob3AuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=544dbf531f454a7a93d5931bca9bc3c93e1d2e8342cd62a15afb800339308e54") format("woff2"),
-         url("//tdwpband.com/cdn/fonts/neue_haas_unica/neuehaasunica_i7.e58c965cfb051cd7dd4a8ab9d9ae00ded82ed47f.woff?h1=dGR3cGJhbmQuY29t&h2=dGR3cHNob3AuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=11fea3456500eac168ccb7d1d8ffdce06152fd2d97f2d8156ff582d30417d45d") format("woff");
-  }
-  
-        @font-face {
-    font-family: Assistant;
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-    src: url("//tdwpband.com/cdn/fonts/assistant/assistant_n4.bcd3d09dcb631dec5544b8fb7b154ff234a44630.woff2?h1=dGR3cGJhbmQuY29t&h2=dGR3cHNob3AuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=e174ac54930492b44092e7e5c9a0b0256f3d8a2058e71ec5bc92be0f9f6a9452") format("woff2"),
-         url("//tdwpband.com/cdn/fonts/assistant/assistant_n4.a2d012304becc2a26f1ded1acc136fcab85c9afd.woff?h1=dGR3cGJhbmQuY29t&h2=dGR3cHNob3AuYWNjb3VudC5teXNob3BpZnkuY29t&hmac=30db75667ea2e369f7071704f14c327af36581587060b69538a272462511a869") format("woff");
-  }
-  
-
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 html, body{
-    width: 100%;
     height: 100%;
+    width: 100%;
 }
 
 body{
-    font-family: "Neue Haas Unica", sans-serif;
-    color:white;
-    font-weight: bold;
-    background: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid;
+    height: 3rem;
+}
+
+nav input[type="text"]{
+    border-radius: 40px;
+    border: none;
+    background: lightgray;
+    width: 500px;
+    height: 1.5rem;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     box-sizing: border-box;
 }
 
-header{
-    display: grid;
-    grid-template-areas: "left-icon heading icons";
-    grid-template-columns: 1fr 2fr 1fr;
-    align-items: center;
-    justify-items: center;
-    height: 4rem;
-    background: black;
+main section{
+    background: lightgray;
+    width: 95vw;
+    min-height:10rem;
+    padding: .5rem;
 }
 
-#headMenu svg{
+main section #sectionHead{
+    display: flex;
+    justify-content: space-between;
     height: 2rem;
 }
 
-
-main{
-    height: 20rem;
-}
-
-.merchContainer{
+main section .content{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.8fr .2fr;
 }
 
-#text ul{
-    margin-left: 2rem;
-}
-
-footer{
-    height: 10rem;
-}
-
-.footerContainer1{
+main section .content #text{
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    gap: .4rem;
+
 }
 
-.footerContainer1 ul{
-    list-style: none;
+.postSubreddit{
+    font-size: .8rem;
 }
 
-#copyright{
-    height: 2rem;
-    border-top: 1px solid white;
-    display: flex;
-    font-size: .7rem;
-    justify-content: center;
-    align-items: center;
+.postTime{
+    font-size: .71rem;
+    color: rgb(84, 84, 84);
+}
+
+.postTitle{
+    font-size: 1.2rem;
+}
+
+.postContent{
+    font-size: 1.1rem;  
+}
+
+main section #sectionHead #right button{
+    border-radius: 50px;
+    width: 3rem;
+    height: 1.4rem;
+    background: rgb(48, 107, 255);
+    color: white;
+    font-weight: bold;
+    border: none;
 }
