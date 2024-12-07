@@ -13,46 +13,128 @@ body{
     font-size: 24px;
 }
 
-nav{
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 4.7fr 1fr;
+    column-gap: 30px;
+}
+
+header{
+    grid-column: span 3;
+    position: sticky;
+    top: 0;
+    background: white;
+    border-bottom: 1px solid #ddd;
+}
+
+header nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid;
-    height: 3rem;
+    height: 3.5rem;
 }
 
-nav input[type="text"]{
-    border-radius: 40px;
+header nav #headLogo, header nav #searchBar, header nav #login{
+    display: inline-flex;
+}
+
+header nav #headLogo svg{
+    width: 3.5rem;
+}
+
+header nav input[type="text"]{
+    text-indent: .5rem;
+    border-radius: 70px;
     border: none;
     background: lightgray;
     width: 500px;
-    height: 1.5rem;
+    height: 2.5rem;
+}
+
+#menuLeft{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right:1px solid #ddd;
+    list-style: none;
+    box-sizing: border-box;
+    padding-top: .5rem;
+    gap: .5rem;
+}
+
+#popular-container, #topics-container, #resurces-container{
+    font-size: 1rem;
+    background: #ddd;
+    padding: .5rem;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+#popular a{
+    text-decoration: none;
+    color:black;
+}
+
+#popular-content{
+    display: inline-flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem
+}
+
+.navigation-line{
+    width: 90%;
+}
+
+#topics-container li{
+    display: flex;
+    justify-content: space-between;
+}
+
+#topics-content{
+    display: none;
+}
+
+#resources-text{
+    display: flex;
+    justify-content: space-between;
 }
 
 main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: .3rem;
     box-sizing: border-box;
+    margin-top: .5rem;
 }
 
 main section{
-    background: lightgray;
-    width: 95vw;
-    min-height:10rem;
+    display: grid;
+    grid-template-rows: .5fr 2fr .5fr;
+    width: 70%;
+    max-height:30rem;
+    box-sizing: border-box;
     padding: .5rem;
+    border-radius: 10px;
 }
 
-main section #sectionHead{
+main section .sectionHead{
     display: flex;
     justify-content: space-between;
     height: 2rem;
+    border-bottom: 1px solid;
 }
 
 main section .content{
     display: grid;
     grid-template-columns: 1.8fr .2fr;
+    padding-top: .5rem;
+}
+
+main section .content #img img{
+    width: 100px;
+    height: 100px;
 }
 
 main section .content #text{
@@ -72,14 +154,46 @@ main section .content #text{
 }
 
 .postTitle{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .postContent{
-    font-size: 1.1rem;  
+    font-size: .9rem;  
 }
 
-main section #sectionHead #right button{
+.postFoot{
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    /*background: orangered;*/
+}
+
+.vote{
+    height: 100%;
+}
+
+.voteButtonHolder, .commentHolder, .award-holder, .share-holder{
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    height: 100%;
+    font-size: .8rem;
+    background: #ddd;
+    border-radius: 15px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.voteButtonHolder button, .commentHolder button, .award-holder button, .share-holder button{
+    background: none;
+    border: none;
+}
+
+.voteButtonHolder button:hover, .commentHolder button:hover, .award-holder button:hover, .share-holder button:hover{
+    cursor: pointer;
+}
+
+main section .sectionHead #right button{
     border-radius: 50px;
     width: 3rem;
     height: 1.4rem;
@@ -87,4 +201,162 @@ main section #sectionHead #right button{
     color: white;
     font-weight: bold;
     border: none;
+}
+main section .sectionHead #right button:hover{
+    cursor: pointer;
+}
+
+hr{
+    width: 70%;
+    border-width:0;
+    border-bottom-width: 0.001rem;
+}
+
+article{
+    box-sizing: border-box;
+    width: 70%;
+    padding: .3rem;
+    border-radius: 10px;
+    transition: ease-in-out 100ms;
+}
+
+article:hover{
+    background: #eee;
+    transition: ease-in-out 100ms;
+}
+
+.content-holder{
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
+    min-height: 10rem;
+    max-height:30rem;
+}
+.article-head{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    grid-column:span 2;
+    font-size: .8rem;
+}
+.article-postTime{
+    word-spacing: -2px;
+    font-size: .71rem;
+    color: rgb(84, 84, 84);
+}
+.article-head-options{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.join-button{
+    border-radius: 50px;
+    width: 3rem;
+    height: 1.4rem;
+    background: rgb(10, 68, 155);
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.join-button:hover{
+    cursor: pointer;
+}
+
+.article-content{
+    grid-column: span 2;
+}
+
+.article-content h2{
+    font-size: 1.1rem;
+    font-weight: normal;
+    padding: .2rem 0;
+}
+
+.article-text{
+    font-size: .9rem;
+}
+
+.article-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.article-image img{
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+}
+.article-foot{
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    gap: .7rem;
+    grid-column: span 3;
+    font-size: .75rem;
+}
+
+.article-foot-votes{
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    background: #ccc;
+    border-radius: 20px;
+    padding: .2rem;
+}
+
+.article-foot-votes button, .article-foot-awards button, .article-foot-shares span button{
+    background: none;
+    border: none;
+}
+
+.article-foot-votes button:hover, .article-foot-awards button:hover, .article-foot-shares:hover, .article-foot-shares span button:hover{
+    cursor: pointer;
+}
+
+.article-foot-comments{
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    background: #ccc;
+    border-radius: 20px;
+    padding: .2rem .4rem;
+    text-decoration: none;
+    color: black;
+}
+
+.comments-button-container{
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+}
+
+.article-foot-awards{
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    background: #ccc;
+    border-radius: 20px;
+    padding: .2rem .4rem;
+    text-decoration: none;
+    color: black;
+}
+
+.article-foot-shares{
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    background: #ccc;
+    border-radius: 20px;
+    padding: .2rem .4rem;
+    text-decoration: none;
+    color: black;
+}
+
+.shares-container{
+    display: flex;
+    align-items: center;
+    gap: .3rem
 }
