@@ -196,3 +196,17 @@ function openMenu(button){
     button.nextElementSibling.classList.toggle('show');
 }
 
+const element = document.getElementById('sidebar');
+
+const observer = new ResizeObserver(() => {
+    const isOverflowing = element.scrollWidth > element.clientWidth || element.scrollHeight > element.clientHeight;
+    if (isOverflowing) {
+        console.log('Element is overflowing!');
+        element.setAttribute('overflow-y','scroll')
+    } else {
+        console.log('Element is not overflowing.');
+        element.removeAttribute('overflow-y')
+    }
+});
+
+observer.observe(element);

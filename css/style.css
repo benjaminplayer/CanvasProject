@@ -54,13 +54,57 @@ header nav input[type="text"]{
     height: 2.5rem;
 }
 
+header nav #login button{
+    margin-right: .5rem;
+}
+
+header nav #login #b1{
+    border-radius: 20px;
+    background: orangered;
+    border: none;
+    width: 4rem;
+    height: 2.2rem;
+    color:white;
+    font-weight: 600;
+}
+
+header nav #login #b2{
+    border-radius: 50%;
+    border: none;
+    width: 2.2rem;
+    height: 2.2rem;
+    line-height: 2.8rem;
+    background: none;
+    transition: 100ms ease-in-out;
+}
+
+header nav #login #b2:hover{
+    background: #eee;
+}
+
+header #login button:hover{
+    cursor: pointer;
+}
+
+/*
+    fix scrollbar problem
+*/
+
 #sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     box-sizing: border-box;
     height: calc(100vh - 3.5rem);
     border-right: 1px solid #ddd;
     position: sticky;
     top: 3.5rem;
     align-self: start;
+    padding: 0 1rem;
+}
+
+#sidebar:first-child{
+    padding: 1rem 0;
 }
 
 #sidebar ul{
@@ -68,11 +112,25 @@ header nav input[type="text"]{
 }
 
 #sidebar ul li.active a{
-    color: #a0a;
-
+    color: black;
+    background: #eee;
     svg{
-        fill:#a0a;
+        fill:black;
     }
+}
+
+#sidebar ul .dropdown-button{
+    width: 100%;
+    background: none;
+    justify-content: space-between;
+}
+
+#sidebar ul li{
+    width: 12rem;
+}
+
+#sidebar ul .dropdown-button span{
+    font-size: 1rem;
 }
 
 #sidebar a, #sidebar .dropdown-button{
@@ -83,19 +141,23 @@ header nav input[type="text"]{
     display: flex;
     align-items: center;
     gap: 1rem;
+    transition: 200ms ease-in-out;
+    color: black;
 }
 
-.dropdown-button{
-    width: 70%;
+#sidebar a:hover, #sidebar .dropdown-button:hover{
+    background: #eee;
+    transition: 200ms ease-in-out;
+    cursor: pointer;
 }
 
 #sidebar svg{
     flex-shrink: 0;
 }
 
-#sidebar a span, #sidebar .dropdown-button span{
+/*#sidebar a span, #sidebar .dropdown-button span{
     flex-grow: 1;
-}
+}*/
 
 #sidebar .sub-menu{
     display: grid;
@@ -113,14 +175,19 @@ header nav input[type="text"]{
 }
 
 #sidebar #popular a{
-    background: #eee;
+    /*background: #eee;*/
     border-radius: 10px;
 }
 
 .sub-div{
     font-size: .9rem;
+    text-align: center;
 }
 
+#sidebar hr{
+    margin: .5rem 0;
+    width: 100%;
+}
 
 main{
     display: flex;
