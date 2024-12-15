@@ -196,7 +196,7 @@ function openMenu(button){
     button.nextElementSibling.classList.toggle('show');
 }
 
-const element = document.getElementById('sidebar');
+/*const element = document.getElementById('sidebar');
 
 const observer = new ResizeObserver(() => {
     const isOverflowing = element.scrollWidth > element.clientWidth || element.scrollHeight > element.clientHeight;
@@ -209,4 +209,4 @@ const observer = new ResizeObserver(() => {
     }
 });
 
-observer.observe(element);
+observer.observe(element);*/
