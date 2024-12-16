@@ -194,7 +194,15 @@ function drawLogos() {
 
 function openMenu(button){
     button.nextElementSibling.classList.toggle('show');
+}   
+
+
+function fill(element){
+    console.log("works");
 }
+
+
+
 
 /*const element = document.getElementById('sidebar');
 

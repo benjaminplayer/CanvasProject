@@ -143,10 +143,8 @@ header #login button:hover {
     align-self: start;
     gap: .5rem;
     justify-content: space-between;
-  /* overflow-y: auto;
     overflow-x: hidden;
-    scrollbar-width: thin;
-    width: 100%;*/
+    overflow-y: auto;
 }
 
 #sidebar:first-child {
@@ -285,6 +283,7 @@ article {
 article:hover {
     background: var(--color-background-hover);
     transition: ease-in-out 100ms;
+    cursor:pointer;
 }
 
 .content-holder {
