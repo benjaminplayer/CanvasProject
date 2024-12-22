@@ -48,6 +48,7 @@ header {
     top: 0;
     background: white;
     border-bottom: 1px solid #ddd;
+    z-index: 1;
 }
 
 header nav {
@@ -297,7 +298,7 @@ article:hover {
 }
 
 .content-holder.image-holder {
-    grid-template-rows: 1fr 1fr 8fr 1fr;
+    grid-template-rows: 1fr 1fr 11fr 1fr;
 }
 
 .article-head {
@@ -348,6 +349,7 @@ article:hover {
 
 .options-button:hover {
     background: var(--color-button-hover);
+    cursor: pointer;
 }
 
 .options-button span {
@@ -395,6 +397,7 @@ article:hover {
 .holder-image{
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
     grid-column: span 3;
     padding: .5rem 0;
 }
@@ -403,7 +406,8 @@ article:hover {
     border-radius: 15px;
     width: 600px;
     max-width: 100%;
-    max-height:100% ;
+    max-height:100%;
+    aspect-ratio: 16 / 9;
 }
 
 .redditLogoCanvas,
@@ -426,6 +430,10 @@ article:hover {
     gap: .3rem;
     border-radius: 20px;
     padding: .2rem;
+}
+
+.article-foot-votes button{
+    border-radius: 50%;
 }
 
 .article-foot-votes button,
@@ -657,5 +665,32 @@ article:hover {
     .content-holder{
         grid-template-rows: 1fr 6fr 1fr;
     }
+
+    .article-head{
+        font-size: .6rem;
+    }
+
+    .article-postTime{
+        font-size: .41rem;
+    }
+
+    .article-content{
+        font-size: .7rem;
+    }
+
+    .article-text{
+        font-size: .6rem;
+    }
+
+    .article-foot{
+        font-size: .45rem;
+    }
+
+    .article-foot-votes button, .article-foot-comments svg , .article-foot-awards button, .article-foot-shares span button {
+        scale: .7;
+
+    }
+
+
 
 }
