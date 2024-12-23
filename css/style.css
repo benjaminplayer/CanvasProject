@@ -269,6 +269,10 @@ main {
     margin-top: .5rem;
 }
 
+main:last-child{
+    margin-bottom: 1rem;
+}
+
 hr {
     width: 70%;
     border-width: 0;
@@ -360,6 +364,10 @@ article:hover {
     grid-column: span 2;
 }
 
+.article-content.no-image{
+    grid-column: span 3;
+}
+
 .content-holder.image-holder .article-content{
     grid-column: span 3;
 }
@@ -408,6 +416,10 @@ article:hover {
     max-width: 100%;
     max-height:100%;
     aspect-ratio: 16 / 9;
+}
+
+.holder-image iframe{
+    border-radius: 15px;
 }
 
 .redditLogoCanvas,
