@@ -1,3 +1,4 @@
+getVoteValues();
 const canvas = document.getElementsByClassName("redditLogoCanvas")[0];
 const ctx = canvas.getContext('2d');
 const twLog = document.getElementById("twitterLogoCanvas");
@@ -120,7 +121,7 @@ function drawLogos() {
     ctx1.resetTransform();
 
     /*ctx1.translate(centerX, centerY);*/
-    ctx1.scale(4,2);
+    ctx1.scale(4, 2);
     ctx1.save();
     ctx1.strokeStyle = "rgba(0,0,0,0)";
     ctx1.miterLimit = 4;
@@ -192,11 +193,233 @@ function drawLogos() {
 
 }
 
-function openMenu(button){
+function openMenu(button) {
     button.nextElementSibling.classList.toggle('show');
-}   
-
-
-function fill(element){
-    console.log("works");
 }
+
+function vote(element) {
+    const arr = Array.from(element.parentNode.children);
+
+    console.log(noVotes(element));
+
+    if(noVotes(element)){
+        //uzame prvotni value iz locally stored arraya
+        element.parentNode.childNodes[3].innerText = formatValues(JSON.parse(localStorage.getItem('VoteValues'))[Array.from(document.querySelectorAll(".article-foot-votes")).indexOf(element.parentNode)]);
+        //console.log("Hey!"+JSON.parse(localStorage.getItem('VoteValues'))[Array.from(document.querySelectorAll(".article-foot-votes")).indexOf(element.parentNode)]);
+    }
+
+    if (otherVotes(element)) {
+        let idx = arr.indexOf(element);
+        //najde index drugega gumba
+        for (let i = 0; i < arr.length; i++) {
+            if (i !== idx && arr[i].classList.contains("filled")) {
+                removeVote(arr[i]);
+                break;
+            }
+        }
+    }
+
+    if (element.classList.contains("filled")) {
+        removeVote(element);
+        return;
+    }
+
+
+    let svg = element.childNodes[1];
+    let commentNode = document.createComment(svg.outerHTML); // zakomentira celoten svg tag
+    svg.parentNode.replaceChild(commentNode, svg); // zamenja nekomentiran svg z komentiranim (new, old)
+
+    const svgNamespace = "http://www.w3.org/2000/svg";
+    const svgFill = document.createElementNS(svgNamespace, "svg");
+    svgFill.setAttribute("fill", "currentColor");
+    svgFill.setAttribute("height", "16");
+    let path;
+
+    switch (element.classList.contains("upvote")) {
+        case true:
+            countVote(element.parentNode, "up");
+            svgFill.setAttribute("icon-name", "upvote-fill");
+            svgFill.setAttribute("viewBox", "0 0 20 20");
+            svgFill.setAttribute("width", "16");
+            svgFill.setAttribute("xmlns", svgNamespace);
+            path = document.createElementNS(svgNamespace, "path");
+            path.setAttribute(
+                "d",
+                "M10 19c-.072 0-.145 0-.218-.006A4.1 4.1 0 0 1 6 14.816V11H2.862a1.751 1.751 0 0 1-1.234-2.993L9.41.28a.836.836 0 0 1 1.18 0l7.782 7.727A1.751 1.751 0 0 1 17.139 11H14v3.882a4.134 4.134 0 0 1-.854 2.592A3.99 3.99 0 0 1 10 19Z"
+            );
+            svgFill.appendChild(path);
+            element.appendChild(svgFill);
+            element.parentNode.classList.add("up");
+            break;
+
+        case false:
+            countVote(element.parentNode, "down");
+            svgFill.setAttribute("icon-name", "downvote-fill");
+            svgFill.setAttribute("viewBox", "0 0 20 20");
+            svgFill.setAttribute("width", "16");
+            svgFill.setAttribute("xmlns", svgNamespace);
+            path = document.createElementNS(svgNamespace, "path");
+            path.setAttribute(
+                "d",
+                "M10 1c.072 0 .145 0 .218.006A4.1 4.1 0 0 1 14 5.184V9h3.138a1.751 1.751 0 0 1 1.234 2.993L10.59 19.72a.836.836 0 0 1-1.18 0l-7.782-7.727A1.751 1.751 0 0 1 2.861 9H6V5.118a4.134 4.134 0 0 1 .854-2.592A3.99 3.99 0 0 1 10 1Z"
+            );
+
+            svgFill.appendChild(path);
+            element.appendChild(svgFill);
+            element.parentNode.classList.add("down");
+            break;
+        default:
+            console.log("something went wrong!");
+            break;
+    }
+    element.classList.add("filled");
+}
+
+function otherVotes(element) {
+    let arr = Array.from(element.parentNode.children);
+    let idx = arr.indexOf(element);
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].classList.contains("filled") && i !== idx)
+            return true;
+    }
+    return false;
+}
+
+function noVotes(element){
+    let arr = Array.from(element.parentNode.children);
+    let idx = arr.indexOf(element);
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].classList.contains("filled"))
+            return true;
+    }
+    return false;
+}
+
+function removeVote(element) {
+    element.childNodes[3].remove();
+
+    //dobi comment
+    let comnode = Array.from(element.childNodes).find(node => node.nodeType == Node.COMMENT_NODE);
+    //dobi samo kodo brez commenta in jo shrani v div
+    let svgcode = comnode.nodeValue.trim();
+    let tempDiv = document.createElement('div');
+    tempDiv.innerHTML = svgcode;
+    let svg = tempDiv.firstElementChild;
+    element.replaceChild(svg, comnode);
+    element.classList.remove("filled");
+    console.log(element.parentNode.classList);
+    if(element.parentNode.classList.contains("up")){
+        element.parentNode.classList.remove("up");
+        return;
+    }
+       
+    if(element.parentNode.classList.contains("down"))
+        element.parentNode.classList.remove("down");
+}
+
+function countVote(element, vote){
+    //console.log(element.childNodes[3])
+    let arr = Array.from(document.querySelectorAll(".article-foot-votes"));
+    let votes = JSON.parse(localStorage.getItem('VoteValues'));
+    let idx = arr.indexOf(element);
+    let span = element.childNodes[3];
+    //console.log(votes[idx]);
+    //console.log(arr.indexOf(element))
+    switch(vote){
+        case "up":
+            votes[idx]++;
+            span.innerText = formatValues(votes[idx]);
+            break;
+        case "down":
+            votes[idx]--;
+            span.innerText = formatValues(votes[idx]);
+            break;
+    }
+    //console.log(votes[idx]);
+}
+
+function getVoteValues(){
+    const arr = [];
+    let text = "", numbers = "", flag ="";
+    let number, dec = 0;
+    document.querySelectorAll(".article-foot-votes").forEach(element => {
+        text = element.childNodes[3].innerText;
+        for(let i = 0; i < text.length; i++){
+            if(text[i] === '.'){
+                flag = "k";
+                dec = text[i+1] *100;
+                break;
+            }
+
+            if(text[i].toLowerCase() === 'k'){
+                flag = "k";
+                break;
+            }
+                
+            numbers+=text[i];
+        }
+        number = parseInt(numbers);
+        if(flag === "k")
+            number= number*1000 + dec;
+
+        arr.push(number);
+        numbers = "";
+        flag = "";
+        dec = 0;
+    });
+    //console.log(arr);
+    //locally shrani provtne vrednosti v array
+    localStorage.setItem('VoteValues', JSON.stringify(arr));
+}
+
+function formatValues(val){
+    console.log("Val / 1000 "+val / 1000);
+    let r = parseFloat(((val/1000) % 1).toFixed(3).substring(0,3));
+    console.log("Reminder: "+ r);
+    
+    if(val/1000 < 1){
+        console.log(val);
+        return val +"";
+    }
+        
+    if(r != 0.0){
+        console.log(val);
+        return parseInt(val/1000) + r +"K";
+    }
+    else{
+        console.log((val/1000).toFixed(0)+"K");
+        return (val/1000).toFixed(0)+"K";
+    }
+}
+
+const optionsMenu = document.querySelectorAll(".options-menu");
+const optionsButton = document.querySelectorAll(".options-button");
+console.log(optionsButton)
+console.log(optionsMenu);
+optionsButton.forEach(element => {
+    element.addEventListener('click', (event) => {
+        let parentDiv;
+        console.log(event.target);
+        switch (((event.target).outerHTML).substring(0,4)) {
+            case "<svg":
+                parentDiv = event.target.parentNode.parentNode.parentNode;
+                break;
+            case "<spa":
+                parentDiv = event.target.parentNode.parentNode;
+                break;
+            case "<pat":
+                parentDiv = event.target.parentNode.parentNode.parentNode.parentNode;
+                break;
+            case "<but":
+                parentDiv = event.target.parentNode;
+                break;
+            default:
+                break;
+        }
+        console.log(parentDiv);
+        console.log(parentDiv.childNodes[parentDiv.childNodes.length-2]);
+        console.log("--------")
+        parentDiv.childNodes[parentDiv.childNodes.length-2].classList.toggle('active');
+        //parentDiv.lastChild.classList.add('active');
+    })
+});
