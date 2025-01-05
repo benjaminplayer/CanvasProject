@@ -394,6 +394,10 @@ function formatValues(val){
 
 const optionsMenu = document.querySelectorAll(".options-menu");
 const optionsButton = document.querySelectorAll(".options-button");
+const loginMenu = document.querySelector(".login");
+const overlay = document.querySelector(".overlay");
+const closeButton = document.querySelector(".login-top").childNodes[1];
+const gridContainer = document.querySelector(".grid-container");
 console.log(optionsButton)
 console.log(optionsMenu);
 optionsButton.forEach(element => {
@@ -422,4 +426,19 @@ optionsButton.forEach(element => {
         parentDiv.childNodes[parentDiv.childNodes.length-2].classList.toggle('active');
         //parentDiv.lastChild.classList.add('active');
     })
+});
+
+document.getElementById("b1").addEventListener('click', () =>{
+    loginMenu.classList.add('active');
+    overlay.classList.add('active');
+});
+
+closeButton.addEventListener('click', () => {
+    loginMenu.classList.remove('active');
+    overlay.classList.remove('active');
+});
+
+overlay.addEventListener('click', () => {
+    loginMenu.classList.remove('active');
+    overlay.classList.remove('active');
 });

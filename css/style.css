@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 :root {
     --color-black: #000000;
     --color-white: #FFFFFF;
@@ -17,6 +19,8 @@
     --color-reddit-downvote: #6A5CFF;
     --color-reddit-downvote-hover: #523DFF;
     --color-reddit-upvote: #D93900;
+    --color-gray-weak: #5C6C74;
+    --color-blue-link: #115BCA;
 }
 
 * {
@@ -87,7 +91,7 @@ header nav input[type="text"] {
     text-indent: .5rem;
     border-radius: 70px;
     border: none;
-    background: lightgray;
+    background: #E5EBEE;
     width: 500px;
     height: 2.5rem;
 }
@@ -126,6 +130,225 @@ header nav #login #b2:hover {
 
 header #login button:hover {
     cursor: pointer;
+}
+
+.login{  
+    position: fixed;
+    background: var(--color-white);
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30rem;
+    max-width: 30rem;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 35rem;
+    display: none;
+    max-height: 100vh;
+}
+
+.login.active{
+    display: flex;
+}
+
+.login a{
+    text-decoration: none;
+    color: var(--color-blue-link);
+}
+
+.login-top{
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.login-top button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: none;
+    width: 32px;
+    height: 32px;
+    margin-right: 1rem;
+}
+
+.login-top button span{
+    width: 16px;
+    height: 16px;
+}
+
+.login-content{
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 4rem;
+    font-size: .825rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.login-content h2{
+    letter-spacing: .25px;
+}
+
+.login-content .top{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.top > span:nth-child(2){
+    line-height: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.google, .apple{
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    height: 2.5rem;
+    box-sizing: border-box;
+}
+
+.google:hover, .apple:hover{
+    cursor: pointer;
+}
+
+.google > div, .apple > div{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.google > div > div, .apple > div > div{
+    margin-left: 1rem;
+    width: 18px;
+    height: 18px;
+}
+
+.google > div > span{
+    font-family: "Open Sans", serif;
+    color: #3c4043;
+}
+
+.google > div > span, .apple > div > span{
+    flex-grow: 1;
+    text-align: center;
+    letter-spacing: .25px;
+}
+
+.apple > div > div svg{
+    width: 100%;
+    height: 100%;
+}
+
+.middle{
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    font-size: .7rem;
+    color: var(--color-gray-weak);
+}
+
+.bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bottom label{
+    width: 100%;
+    height: 3rem;
+    background: #E5EBEE;
+    border-radius: 17px;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.bottom label:hover {
+    background: var(--color-button-hover);
+}
+
+.bottom label:hover span input {
+    background: var(--color-button-hover);
+}
+
+.bottom label span{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.bottom label span input{
+    width: 100%;
+    height: 1.5rem;
+    outline: none;
+    border: none;
+    background: #E5EBEE;
+    color: var(--color-black);
+}
+
+.bottom label span input::placeholder{
+    color: var(--color-gray-weak);
+    opacity: 1;
+}
+
+.bottom label span :-ms-input-placeholder{
+    color: var(--color-gray-weak);
+}
+
+.login-bottom{
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+.login-bottom div{
+    display: flex;
+    width: 100%;
+    padding: 0 4rem;
+    justify-content: center;
+}
+
+.login-bottom div button{
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    height: 2.5rem;
+    background: #0000000C;
+}
+
+.login-bottom div button span{
+    color: #0000003F; /*rgb(128, 137, 151);*/
+}
+
+.overlay{
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.overlay.active{
+    pointer-events: all;
+    opacity: 1;
 }
 
 /*
