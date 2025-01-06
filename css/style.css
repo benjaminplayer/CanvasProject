@@ -68,6 +68,32 @@ header nav {
     padding: 0 1rem;
 }
 
+.hamSidebar{
+    display: none;
+}
+
+.hamSidebar button{
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.hamSidebar button span{
+    width: 17px;
+    height: 17px;
+    box-sizing: border-box;
+}
+
+.hamSidebar button span svg{
+    width: 100%;
+    height: 100%;
+}
+
 header nav #headLogo,
 header nav #searchBar,
 header nav #login {
@@ -360,6 +386,50 @@ header #login button:hover {
     pointer-events: all;
     opacity: 1;
 }
+
+.hamMen1{
+    position: fixed;
+    z-index: 2;
+    width: 15rem;
+    height: 10rem;
+    right: 15px;
+    background: var(--color-white);
+    border: 1px solid var(--color-white);
+    box-shadow: rgba(0, 0, 0, 0.548) 0px 3px 8px;
+    font-size: .825rem;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: none;
+}
+
+.hamMen1.active{
+    display: initial;
+}
+
+.hamMen1 nav{
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+}
+
+.hamMen1 nav li{
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 0 1.2rem;
+}
+
+.hamMen1 nav li:hover{
+    cursor:pointer;
+}
+
+.hamMen1 nav li span svg{
+    scale: 1;
+}
+
 
 /*
     fix scrollbar problem
@@ -662,13 +732,13 @@ article:hover {
 
 .article-content h2 {
     font-size: 1.1rem;
-    font-weight: normal;
+    font-weight: 500;
     padding: .2rem 0;
     color: var(--color-content-header);
 }
 
 .article-text {
-    font-size: .9rem;
+    font-size: .825rem;
     color: var(--color-content)
 }
 
@@ -894,20 +964,30 @@ article:hover {
 }
 
 @media(max-width:800px) {
-    header nav #headLogo svg {
-        scale: .7;
+
+    header nav{
+        gap: 15px;
     }
 
-    header nav #headLogo #logoText {
-        scale: 1;
+    header nav >div:first-child{
+        display: initial;
+    }
+
+    
+    header nav #headLogo #logoText{
+        display: none;
     }
 
     header nav #headLogo svg {
         width: 2.5rem;
     }
 
+    header nav #searchBar{
+        flex-grow: 1;
+    }
+
     header nav input[type="text"] {
-        width: 300px;
+        width: 100%;
         height: 2rem;
     }
 
@@ -964,11 +1044,6 @@ article:hover {
 
     header nav #headLogo svg {
         width: 2rem;
-    }
-
-    header nav #headLogo #logoText {
-        scale: .9;
-        margin-left: -.5rem;
     }
 
     header nav input[type="text"] {
@@ -1068,10 +1143,6 @@ article:hover {
 
     header nav #headLogo svg{
         scale: 1;
-    }
-
-    header nav #headLogo #logoText{
-        display: none;
     }
 
     header nav input[type="text"]{

@@ -399,8 +399,15 @@ const loginMenu = document.querySelector(".login");
 const overlay = document.querySelector(".overlay");
 const closeButton = document.querySelector(".login-top").childNodes[1];
 const gridContainer = document.querySelector(".grid-container");
+const ham1button = document.querySelector('#b2');
+const ham1 = document.querySelector('.hamMen1');
+//naredi side menu da dela
+
+
+/*
 console.log(optionsButton)
-console.log(optionsMenu);
+console.log(optionsMenu);*/
+
 optionsButton.forEach(element => {
     element.addEventListener('click', (event) => {
         let parentDiv;
@@ -426,7 +433,7 @@ optionsButton.forEach(element => {
         console.log("--------")
         parentDiv.childNodes[parentDiv.childNodes.length-2].classList.toggle('active');
         //parentDiv.lastChild.classList.add('active');
-    })
+    })  
 });
 
 document.getElementById("b1").addEventListener('click', () =>{
@@ -445,4 +452,8 @@ overlay.addEventListener('click', () => {
     loginMenu.classList.remove('active');
     overlay.classList.remove('active');
     body.classList.remove('inbg');
+});
+
+ham1button.addEventListener('click', () =>{
+    ham1.classList.toggle('active');
 });
