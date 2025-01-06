@@ -39,6 +39,10 @@ body {
     font-size: 24px;
 }
 
+body.inbg{
+    overflow: hidden;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 4.7fr 1fr;
@@ -141,7 +145,7 @@ header #login button:hover {
     flex-direction: column;
     justify-content: space-between;
     width: 30rem;
-    max-width: 30rem;
+    max-width: 80vw;
     z-index: 3;
     top: 50%;
     left: 50%;

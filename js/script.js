@@ -392,6 +392,7 @@ function formatValues(val){
     }
 }
 
+const body = document.getElementsByTagName('body')[0];
 const optionsMenu = document.querySelectorAll(".options-menu");
 const optionsButton = document.querySelectorAll(".options-button");
 const loginMenu = document.querySelector(".login");
@@ -431,14 +432,17 @@ optionsButton.forEach(element => {
 document.getElementById("b1").addEventListener('click', () =>{
     loginMenu.classList.add('active');
     overlay.classList.add('active');
+    body.classList.add('inbg')
 });
 
 closeButton.addEventListener('click', () => {
     loginMenu.classList.remove('active');
     overlay.classList.remove('active');
+    body.classList.remove('inbg');
 });
 
 overlay.addEventListener('click', () => {
     loginMenu.classList.remove('active');
     overlay.classList.remove('active');
+    body.classList.remove('inbg');
 });
