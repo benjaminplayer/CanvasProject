@@ -460,6 +460,7 @@ ham1button.addEventListener('click', () =>{
     ham1.classList.toggle('active');
 });
 
+/*
 sideHamTogg.addEventListener('click', () =>{
     sidebar.classList.toggle('active');
-});
+});*/
