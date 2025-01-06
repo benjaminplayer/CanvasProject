@@ -454,6 +454,15 @@ header #login button:hover {
     /* Add space for scrollbar */
 }
 
+#sidebar.active{
+    display: flex;
+}
+
+/*Naredi da naredi grid template*/
+.grid-container.sideAc{
+
+}
+
 #sidebar:first-child {
     padding: 1rem;
 }

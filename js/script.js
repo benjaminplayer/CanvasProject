@@ -401,6 +401,8 @@ const closeButton = document.querySelector(".login-top").childNodes[1];
 const gridContainer = document.querySelector(".grid-container");
 const ham1button = document.querySelector('#b2');
 const ham1 = document.querySelector('.hamMen1');
+const sideHamTogg = document.querySelector('.hamSidebar');
+const sidebar = document.querySelector('#sidebar');
 //naredi side menu da dela
 
 
@@ -456,4 +458,8 @@ overlay.addEventListener('click', () => {
 
 ham1button.addEventListener('click', () =>{
     ham1.classList.toggle('active');
+});
+
+sideHamTogg.addEventListener('click', () =>{
+    sidebar.classList.toggle('active');
 });
