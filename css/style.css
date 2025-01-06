@@ -57,7 +57,7 @@ header {
     top: 0;
     background: white;
     border-bottom: 1px solid #ddd;
-    z-index: 1;
+    z-index: 2;
 }
 
 header nav {
@@ -378,11 +378,17 @@ header #login button:hover {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    z-index: 2;
     pointer-events: none;
 }
 
 .overlay.active {
+    pointer-events: all;
+    opacity: 1;
+}
+
+.overlay.active1{
+    z-index: 1;
     pointer-events: all;
     opacity: 1;
 }
@@ -413,17 +419,32 @@ header #login button:hover {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     align-items: center;
+    box-sizing: border-box;
 }
 
-.hamMen1 nav li{
-    display: inline-flex;
+.hamMen1 nav div{
+    height: 100%;
+}
+
+.hamMen1 nav div:first-child{
+    border-radius: 10px 10px 0 0;
+}
+
+.hamMen1 nav div:last-child{
+    border-radius: 0 0 10px 10px;
+}
+
+.hamMen1 nav div li{
+    display: flex;
     align-items: center;
     gap: .5rem;
     padding: 0 1.2rem;
+    height: 100%;
 }
 
-.hamMen1 nav li:hover{
+.hamMen1 nav div:hover{
     cursor:pointer;
+    background: var(--color-button-hover);
 }
 
 .hamMen1 nav li span svg{
@@ -454,12 +475,12 @@ header #login button:hover {
     /* Add space for scrollbar */
 }
 
-#sidebar.active{
-    display: flex;
-}
 
-/*Naredi da naredi grid template*/
-.grid-container.sideAc{
+#sidebar.active{
+    display: initial;
+    position: fixed;
+    z-index: 2;
+    background: var(--color-white);
 
 }
 
@@ -497,6 +518,16 @@ header #login button:hover {
 
 #sidebar ul .dropdown-button span {
     font-size: 1rem;
+}
+
+#sidebar ul .dropdown-button svg{
+    rotate: 180deg;
+    transition: .25s ease;
+}
+
+#sidebar ul .dropdown-button svg.active{
+    transform: rotate(-180deg);
+    transition: .25s ease;
 }
 
 #sidebar a,
@@ -1148,6 +1179,7 @@ article:hover {
     
     header nav{
         height: 4rem;
+        gap:10px;
     }
 
     header nav #headLogo svg{
@@ -1175,6 +1207,10 @@ article:hover {
 
     header nav #login #b2 span svg{
         scale: 1;
+    }
+
+    #sidebar{
+        top:4rem;
     }
 
     main{

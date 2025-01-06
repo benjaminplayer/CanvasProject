@@ -195,6 +195,8 @@ function drawLogos() {
 
 function openMenu(button) {
     button.nextElementSibling.classList.toggle('show');
+    console.log(button.children[1]);
+    button.children[1].classList.toggle('active');
 }
 
 function vote(element) {
@@ -451,8 +453,16 @@ closeButton.addEventListener('click', () => {
 });
 
 overlay.addEventListener('click', () => {
-    loginMenu.classList.remove('active');
-    overlay.classList.remove('active');
+    if(loginMenu.classList.contains('active')){
+        loginMenu.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+
+    if(sidebar.classList.contains('active')){
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active1');
+    }
+
     body.classList.remove('inbg');
 });
 
@@ -460,7 +470,18 @@ ham1button.addEventListener('click', () =>{
     ham1.classList.toggle('active');
 });
 
-/*
+
 sideHamTogg.addEventListener('click', () =>{
     sidebar.classList.toggle('active');
-});*/
+    overlay.classList.toggle('active1');
+    body.classList.toggle('inbg');
+});
+
+window.matchMedia("(max-width: 800px)").addEventListener('change', ()  =>{
+    if(sidebar.classList.contains('active')){
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active1');
+        body.classList.remove('inbg');
+    }
+        
+});
