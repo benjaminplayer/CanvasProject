@@ -991,9 +991,6 @@ article:hover {
 
     header nav #login #b2 span svg {
         scale: .7;
-        position: relative;
-        left: -12%;
-        top: -10%;
     }
 
     article {
