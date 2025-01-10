@@ -3,6 +3,9 @@
 
 A re-creatation of the popular site "reddit".
 
+## Disclamer
+This is just a re-creation of Reddit.com. I do not own any of the images, layouts, logos used in the site. All the rigths go to their respective owners.
+
 ## Languages used
 
 - HTML 5
