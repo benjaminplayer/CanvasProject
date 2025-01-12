@@ -414,29 +414,7 @@ console.log(optionsMenu);*/
 
 optionsButton.forEach(element => {
     element.addEventListener('click', (event) => {
-        let parentDiv;
-        console.log(event.target);
-        switch (((event.target).outerHTML).substring(0,4)) {
-            case "<svg":
-                parentDiv = event.target.parentNode.parentNode.parentNode;
-                break;
-            case "<spa":
-                parentDiv = event.target.parentNode.parentNode;
-                break;
-            case "<pat":
-                parentDiv = event.target.parentNode.parentNode.parentNode.parentNode;
-                break;
-            case "<but":
-                parentDiv = event.target.parentNode;
-                break;
-            default:
-                break;
-        }
-        console.log(parentDiv);
-        console.log(parentDiv.childNodes[parentDiv.childNodes.length-2]);
-        console.log("--------")
-        parentDiv.childNodes[parentDiv.childNodes.length-2].classList.toggle('active');
-        //parentDiv.lastChild.classList.add('active');
+        event.target.closest(".article-head-options").children[event.target.closest(".article-head-options").children.length-1].classList.toggle('active');
     })  
 });
 

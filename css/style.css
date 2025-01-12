@@ -937,6 +937,12 @@ article:hover {
     height: 1.3rem;
 }
 
+.article-foot-awards > button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .article-foot-shares {
     display: flex;
     align-items: center;

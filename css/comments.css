@@ -1,0 +1,292 @@
+html, body{
+    height: initial;
+    width: initial;
+}
+
+article:hover{
+    background: initial;
+    cursor: initial;
+}
+
+.return-button{
+    display: flex;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    height: 28px;
+    background: var(--color-button);
+    border: none;
+    box-sizing: border-box;
+}
+
+.return-button:hover{
+    background: var(--color-button-hover);
+}
+
+.return-button a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    color: var(--color-black);
+}
+
+.return-button a span{
+    height: 14px;
+    aspect-ratio: 1/1;
+}
+
+.return-button a span svg{
+    height: 14px;
+    width: 14px;
+}
+
+.add{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    color: var(--color-gray-weak);
+}
+
+.add > button{
+    background: none;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    padding: 0 .5rem;
+    width: 9rem;
+}
+
+.add > button > span{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.add > span{
+    display: flex;
+    gap: 15px
+}
+
+.add button > span span:first-child{
+    height: 20px;
+    width: 20px;
+}
+
+.add > span:last-child{
+    font-size: .7rem;
+}
+
+.sort{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.sort span:last-child button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    border-radius: 15px;
+    border: none;
+    height: 1.7rem;
+    background: var(--color-white);
+}
+
+.sort span:last-child button:hover{
+    background: var(--color-button-hover);
+}
+
+.sort span:last-child button span:last-child{
+    height: 16px;
+    width: 16px;
+    fill: var(--color-gray-weak);
+}
+
+.sort span:last-child button span:last-child svg{
+    width: 100%;
+    height: 100%;
+}
+
+.sort span:last-child button span:first-child{
+    font-size: .7rem;
+    color: var(--color-gray-weak);
+}
+
+.add > span label{
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+.add > span label input{
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    height: 2rem;
+    text-indent: 10px;
+}
+
+.comments-holder{
+    width: 70%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.comments-holder article{
+    width: 100%;
+    height: 7rem;
+    max-height: 10rem;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-columns: 50px 1fr;
+}
+
+.comment-userimage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment-userimage span, img{
+    aspect-ratio: 1 / 1;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.comment-info{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.comment-info span:first-child{
+    font-size: .7rem;
+    font-weight: 600;
+}
+
+.comment-info span:last-child{
+    font-size: .65rem;
+    color: rgb(84, 84, 84);
+}
+
+.comment-content{
+    display: flex;
+    align-items: center;
+    font-size: .9rem;
+}
+
+.comment-content, .comment-foot{
+    grid-column: 2;
+}
+
+.comment-foot{
+    display: flex;
+    font-size: .75rem;
+    gap: 1rem;
+}
+
+.comment-votes{
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    width: 4.4rem;
+}
+
+.comment-votes button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    height: 32px;
+    background: none;
+    border:none;
+}
+
+.comment-votes.up button:first-child span svg{
+    fill: var(--reddit-orange);
+}
+
+.comment-votes.down button:last-child span svg{
+    fill: var(--color-reddit-downvote);
+}
+
+.comment-votes button span{
+    height: 16px;
+    width: 16px;
+}
+
+.comment-reply{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    border-radius: 15px;
+    width: 4.4rem;
+}
+
+.comment-reply span:first-child{
+    display: inline-flex;
+}
+
+.comment-reply span:last-child{
+    height: 16px;
+}
+
+.comment-awards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    gap:.3rem;
+    width: 4.4rem;
+}
+
+.comment-awards span:first-child{
+    display: inline-flex;
+}
+
+.comment-awards span:last-child{
+    height: 16px;
+}
+
+.comment-share{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    border-radius: 15px;
+    width: 4.4rem;
+}
+
+.comment-share span:first-child{
+    display: inline-flex;
+}
+
+.comment-share span:last-child{
+    height: 16px;
+}
+
+.comment-votes button:hover,.comment-reply:hover, .comment-awards:hover, .comment-share:hover{
+    background: var(--color-button-hover);
+}
+
+.comment-votes button:first-child:hover{
+    svg{
+        fill: var(--color-reddit-orange-hover);
+    }
+    
+}
+
+.comment-votes button:last-child:hover{
+    svg{
+        fill: var(--color-reddit-downvote);
+    }   
+}
