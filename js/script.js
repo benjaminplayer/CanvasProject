@@ -405,6 +405,14 @@ const ham1button = document.querySelector('#b2');
 const ham1 = document.querySelector('.hamMen1');
 const sideHamTogg = document.querySelector('.hamSidebar');
 const sidebar = document.querySelector('#sidebar');
+const links = document.querySelectorAll('.article-foot-comments');
+console.log(links)
+
+links.forEach(element => {
+    element.addEventListener('click', () =>{
+        localStorage.setItem('postHTML',element.closest('article').outerHTML);
+    })
+});
 //naredi side menu da dela
 
 

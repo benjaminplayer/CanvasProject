@@ -1,3 +1,10 @@
+window.onload = () => {
+    let title = document.querySelector('title');
+    title.innerHTML = getPostTitle() +" : " +getSubRedditName();
+    console.log(localStorage.getItem('postHTML'));
+}
+
+
 const menubuttons = document.querySelectorAll(".dropdown-button");
 
 menubuttons.forEach(element => {
@@ -43,6 +50,19 @@ commentDownvote.forEach(element =>{
 });
 
 function voteComm(button) {
+    console.log(otherVotes(button));
+    if(otherVotes(button)){
+        let arr = Array.from(button.parentNode.children)
+        let idx = arr.indexOf(button);
+        //najde index drugega gumba
+        for (let i = 0; i < arr.length; i++) {
+            if (i !== idx && arr[i].classList.contains("filled")) {
+                removeVote(arr[i].children[0]);
+                break;
+            }
+        }
+    }
+
     let svg = button.children[0].children[0];
     let commentNode = document.createComment(svg.outerHTML); // zakomentira celoten svg tag
     svg.parentNode.replaceChild(commentNode, svg); // zamenja nekomentiran svg z komentiranim (new, old)
@@ -91,19 +111,13 @@ function voteComm(button) {
             break;
     }
 
+    button.classList.add('filled');
 
 }
 
-//naredi side menu da dela
-
-
-/*
-console.log(optionsButton)
-console.log(optionsMenu);*/
 optionsButton.addEventListener('click', () => {
     optionsButton.parentNode.children[2].classList.toggle('active');
 });
-
 
 document.getElementById("b1").addEventListener('click', () => {
     loginMenu.classList.add('active');
@@ -135,7 +149,6 @@ ham1button.addEventListener('click', () => {
     ham1.classList.toggle('active');
 });
 
-
 sideHamTogg.addEventListener('click', () => {
     sidebar.classList.toggle('active');
     overlay.classList.toggle('active1');
@@ -153,3 +166,64 @@ window.matchMedia("(max-width: 800px)").addEventListener('change', () => {
 
 });
 
+getPostValue();
+
+function getPostValue(){
+    let localvotes = JSON.parse(localStorage.getItem('VoteValues'));
+    console.log(localvotes);
+
+}
+
+function getPostTitle(){
+    let articleContent = document.querySelector('.article-content');
+    return articleContent.children[0].innerHTML;
+}
+
+function getSubRedditName(){
+    return document.querySelector('.article-poster').innerHTML;
+}
+
+function otherVotes(element) {
+    let arr = Array.from(element.parentNode.children);
+    let idx = arr.indexOf(element);
+    console.log(idx);
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].classList.contains("filled") && i !== idx)
+            return true;
+    }
+    return false;
+}
+
+function removeVote(element) {
+    element.children[0].remove();
+
+    //dobi comment
+    let comnode = Array.from(element.childNodes).find(node => node.nodeType == Node.COMMENT_NODE);
+    //dobi samo kodo brez commenta in jo shrani v div
+    let svgcode = comnode.nodeValue.trim();
+    let tempDiv = document.createElement('div');
+    tempDiv.innerHTML = svgcode;
+    let svg = tempDiv.firstElementChild;
+    element.replaceChild(svg, comnode);
+    element.parentNode.classList.remove("filled");
+    console.log(element.parentNode.classList);
+    if(element.parentNode.parentNode.classList.contains("up")){
+        element.parentNode.parentNode.classList.remove("up");
+        return;
+    }
+       
+    if(element.parentNode.parentNode.classList.contains("down"))
+        element.parentNode.parentNode.classList.remove("down");
+}
+
+function generatePost(){
+    let commentContent = localStorage.getItem('postHTML');
+    let main = document.querySelector('main');
+    let commentNode = document.createComment(commentContent);
+    let tempDiv = document.createElement('div');
+    tempDiv.innerHTML = commentNode.nodeValue.trim();
+}
+
+function generateComments(){
+
+}

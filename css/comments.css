@@ -60,6 +60,10 @@ article:hover{
     width: 9rem;
 }
 
+.add > button:hover{
+    cursor: pointer;
+}
+
 .add > button > span{
     display: inline-flex;
     align-items: center;
@@ -208,6 +212,7 @@ article:hover{
     height: 32px;
     background: none;
     border:none;
+    fill: var(--color-black);
 }
 
 .comment-votes.up button:first-child span svg{
@@ -276,6 +281,7 @@ article:hover{
 
 .comment-votes button:hover,.comment-reply:hover, .comment-awards:hover, .comment-share:hover{
     background: var(--color-button-hover);
+    cursor: pointer;
 }
 
 .comment-votes button:first-child:hover{
