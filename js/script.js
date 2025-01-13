@@ -412,12 +412,6 @@ links.forEach(element => {
         localStorage.setItem('postHTML',element.closest('article').outerHTML);
     })
 });
-//naredi side menu da dela
-
-
-/*
-console.log(optionsButton)
-console.log(optionsMenu);*/
 
 optionsButton.forEach(element => {
     element.addEventListener('click', (event) => {

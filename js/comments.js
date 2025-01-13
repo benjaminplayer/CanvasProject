@@ -2,7 +2,6 @@ window.onload = () => {
     let title = document.querySelector('title');
     generatePost();
     title.innerHTML = getPostTitle() +" : " +getSubRedditName();
-    
 }
 
 
@@ -116,9 +115,9 @@ function voteComm(button) {
 
 }
 
-/*optionsButton.addEventListener('click', () => {
+optionsButton.addEventListener('click', () => {
     optionsButton.parentNode.children[2].classList.toggle('active');
-});*/
+});
 
 document.getElementById("b1").addEventListener('click', () => {
     loginMenu.classList.add('active');
@@ -216,8 +215,6 @@ function removeVote(element) {
     if(element.parentNode.parentNode.classList.contains("down"))
         element.parentNode.parentNode.classList.remove("down");
 }
-
-
 
 function generatePost(){
     
