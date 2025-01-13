@@ -242,7 +242,7 @@ function generatePost(){
     article = document.querySelectorAll('article')[0];
     console.log(article);
     
-    if(article.children[0].classList.contains('image-holder')){
+    if(article.children[0].classList.contains('image-holder') && !article.children[0].children[3].children[1].outerHTML.includes('iframe')){
         fixImage();
     }
 

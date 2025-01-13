@@ -1,6 +1,7 @@
 html, body{
-    height: initial;
-    width: initial;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 article:hover{
@@ -295,4 +296,10 @@ article:hover{
     svg{
         fill: var(--color-reddit-downvote);
     }   
+}
+
+@media(max-width:928px){
+    html,body{
+    overflow: initial;
+    }
 }
