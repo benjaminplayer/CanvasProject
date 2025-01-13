@@ -117,7 +117,6 @@ function drawLogos() {
 
 
 
-    ctx1.clearRect(0, 0, canvas.width, canvas.height);
     ctx1.resetTransform();
 
     /*ctx1.translate(centerX, centerY);*/
